@@ -13,5 +13,15 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+  phpmyadmin:
+    image: phpmyadmin:5.2.2
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: mysql # ✅ must match the service name of your MySQL container
+      PMA_USER: root # Optional, for convenience
+      PMA_PASSWORD: mypassword # Optional, matches MYSQL_ROOT_PASSWORD
+
 volumes:
   mysql_data:
